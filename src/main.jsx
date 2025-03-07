@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { restaurants } from './contsts/mocks';
+import { restaurants } from './mocks/mocks';
 
 const root = document.getElementById('root');
 const reactRoot = createRoot(root);
