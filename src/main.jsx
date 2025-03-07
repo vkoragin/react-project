@@ -9,7 +9,7 @@ reactRoot.render(
     {restaurants.map((restaurant) => (
       <section
         key={restaurant.id}
-        style={{ border: 'dashed 1px black', padding: '8px' }}
+        style={{ border: 'dashed 1px black', padding: '8px', width: '30%' }}
       >
         <h1>{restaurant.name}</h1>
         <h3>Меню</h3>
