@@ -6,18 +6,36 @@ import { Restaurant } from '../restaurant/restaurant';
 export const App = () => {
   const [restaurant, setRestaurant] = useState(restaurants[0]);
 
-  const handleChooseRestaurant = (restaurantIndex) => {
+  const handleChooseRestaurant = (e, restaurantIndex) => {
+    e.preventDefault();
     setRestaurant(restaurants[restaurantIndex]);
   };
 
   return (
     <Layout>
       <section>
-        <nav>
+        <nav
+          style={{
+            display: 'flex',
+            borderLeft: 'solid 1px black',
+            borderBottom: 'none',
+          }}
+        >
           {restaurants.map(({ id, name }, i) => (
-            <button key={id} onClick={() => handleChooseRestaurant(i)}>
+            <a
+              key={id}
+              href="/"
+              onClick={(e) => handleChooseRestaurant(e, i)}
+              style={{
+                padding: '8px',
+                textDecoration: 'none',
+                borderRight: 'solid 1px black',
+                borderTop: 'solid 1px black',
+                color: 'black',
+              }}
+            >
               {name}
-            </button>
+            </a>
           ))}
         </nav>
 

@@ -6,7 +6,7 @@ export const Restaurant = ({ restaurant }) => {
 
   return (
     <section
-      style={{ border: 'dashed 1px black', padding: '8px', width: '30%' }}
+      style={{ border: 'solid 1px black', padding: '8px', width: '30%' }}
     >
       <h2>{name}</h2>
       <Menu menu={menu} />

@@ -1,5 +1,5 @@
 export const Layout = ({ children }) => {
-  const style = { padding: '16px', border: 'dashed 1px black' };
+  const style = { padding: '16px', border: 'solid 1px black' };
 
   return (
     <>
