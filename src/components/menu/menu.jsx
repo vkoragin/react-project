@@ -5,15 +5,14 @@ export const Menu = ({ menu }) => {
     <>
       <h3>Меню</h3>
       <ul>
-        {!!menu.length &&
-          menu.map(({ id, name }) => (
-            <li
-              key={id}
-              style={{ display: 'flex', gap: '8px', paddingBottom: '8px' }}
-            >
-              {name} <Counter />
-            </li>
-          ))}
+        {menu.map(({ id, name }) => (
+          <li
+            key={id}
+            style={{ display: 'flex', gap: '8px', paddingBottom: '8px' }}
+          >
+            {name} <Counter />
+          </li>
+        ))}
       </ul>
     </>
   );

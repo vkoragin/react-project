@@ -9,7 +9,7 @@ export const Restaurant = ({ restaurant }) => {
       style={{ border: 'solid 1px black', padding: '8px', width: '30%' }}
     >
       <h2>{name}</h2>
-      <Menu menu={menu} />
+      {!!menu.length && <Menu menu={menu} />}
       {!!reviews.length && <Reviews reviews={reviews} />}
     </section>
   );
