@@ -4,11 +4,11 @@ import { restaurants } from '../../mocks/restaurants';
 import { Restaurant } from '../restaurant/restaurant';
 
 export const App = () => {
-  const [restaurant, setRestaurant] = useState(restaurants[0]);
+  const [restaurantIndex, setRestaurantIndex] = useState(0);
 
-  const handleChooseRestaurant = (e, restaurantIndex) => {
+  const handleChooseRestaurant = (e, index) => {
     e.preventDefault();
-    setRestaurant(restaurants[restaurantIndex]);
+    setRestaurantIndex(index);
   };
 
   return (
@@ -28,7 +28,7 @@ export const App = () => {
               onClick={(e) => handleChooseRestaurant(e, i)}
               style={{
                 padding: '8px',
-                textDecoration: 'none',
+                textDecoration: i === restaurantIndex ? 'underline' : 'none',
                 borderRight: 'solid 1px black',
                 borderTop: 'solid 1px black',
                 color: 'black',
@@ -39,7 +39,9 @@ export const App = () => {
           ))}
         </nav>
 
-        {restaurant && <Restaurant restaurant={restaurant} />}
+        {!!restaurants[restaurantIndex] && (
+          <Restaurant restaurant={restaurants[restaurantIndex]} />
+        )}
       </section>
     </Layout>
   );
