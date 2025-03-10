@@ -4,7 +4,7 @@ export const Layout = ({ children }) => {
   return (
     <>
       <header style={{ ...style, marginBottom: '24px' }}>Header</header>
-      <main>{children}</main>
+      <section>{children}</section>
       <footer style={{ ...style, marginTop: '24px' }}>Footer</footer>
     </>
   );
