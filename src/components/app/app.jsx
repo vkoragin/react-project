@@ -13,7 +13,7 @@ export const App = () => {
 
   return (
     <Layout>
-      <section>
+      <>
         <nav
           style={{
             display: 'flex',
@@ -42,7 +42,7 @@ export const App = () => {
         {!!restaurants[restaurantIndex] && (
           <Restaurant restaurant={restaurants[restaurantIndex]} />
         )}
-      </section>
+      </>
     </Layout>
   );
 };
