@@ -1,11 +1,11 @@
-export const Layout = ({ children }) => {
-  const style = { padding: '16px', border: 'solid 1px black' };
+import { STYLE } from './consts';
 
+export const Layout = ({ children }) => {
   return (
     <>
-      <header style={{ ...style, marginBottom: '24px' }}>Header</header>
+      <header style={{ ...STYLE, marginBottom: '24px' }}>Header</header>
       <section>{children}</section>
-      <footer style={{ ...style, marginTop: '24px' }}>Footer</footer>
+      <footer style={{ ...STYLE, marginTop: '24px' }}>Footer</footer>
     </>
   );
 };

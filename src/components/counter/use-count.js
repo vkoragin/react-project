@@ -5,10 +5,14 @@ export const useCount = () => {
   const [count, setCount] = useState(0);
 
   const increment = () => {
-    if (count < MAX) setCount(count + 1);
+    if (count < MAX) {
+      setCount(count + 1);
+    }
   };
   const decrement = () => {
-    if (count > MIN) setCount(count - 1);
+    if (count > MIN) {
+      setCount(count - 1);
+    }
   };
 
   return {

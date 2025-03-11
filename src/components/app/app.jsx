@@ -4,11 +4,14 @@ import { restaurants } from '../../mocks/restaurants';
 import { Restaurant } from '../restaurant/restaurant';
 
 export const App = () => {
-  const [restaurantIndex, setRestaurantIndex] = useState(0);
+  const [restaurant, setRestaurant] = useState(restaurants[0]);
 
-  const handleChooseRestaurant = (e, index) => {
+  const handleChooseRestaurant = (e, id) => {
     e.preventDefault();
-    setRestaurantIndex(index);
+    const viewRestorant = restaurants.find(
+      (restaurant) => restaurant.id === id
+    );
+    setRestaurant(viewRestorant);
   };
 
   return (
@@ -21,27 +24,28 @@ export const App = () => {
             borderBottom: 'none',
           }}
         >
-          {restaurants.map(({ id, name }, i) => (
-            <a
+          {restaurants.map(({ id, name }) => (
+            <button
               key={id}
-              href="/"
-              onClick={(e) => handleChooseRestaurant(e, i)}
+              type="button"
+              onClick={(e) => handleChooseRestaurant(e, id)}
               style={{
                 padding: '8px',
-                textDecoration: i === restaurantIndex ? 'underline' : 'none',
+                color: 'black',
+                fontWeight: id === restaurant.id ? 'bold' : 'normal',
                 borderRight: 'solid 1px black',
                 borderTop: 'solid 1px black',
-                color: 'black',
+                borderBottom: 'none',
+                borderLeft: 'none',
+                background: 'none',
               }}
             >
               {name}
-            </a>
+            </button>
           ))}
         </nav>
 
-        {!!restaurants[restaurantIndex] && (
-          <Restaurant restaurant={restaurants[restaurantIndex]} />
-        )}
+        {!!restaurant && <Restaurant restaurant={restaurant} />}
       </>
     </Layout>
   );
