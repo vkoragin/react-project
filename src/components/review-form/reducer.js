@@ -4,7 +4,7 @@ import {
   SET_RATING_ACTION,
   CLEAR_FORM_ACTION,
 } from './actions';
-import { DEFAULT_FROM_VALUE } from './consts';
+import { DEFAULT_FORM_VALUE } from './consts';
 
 export const reducer = (state, { type, payload }) => {
   switch (type) {
@@ -15,7 +15,7 @@ export const reducer = (state, { type, payload }) => {
     case SET_RATING_ACTION:
       return { ...state, rating: payload };
     case CLEAR_FORM_ACTION:
-      return { ...DEFAULT_FROM_VALUE };
+      return { ...DEFAULT_FORM_VALUE };
     default:
       return state;
   }

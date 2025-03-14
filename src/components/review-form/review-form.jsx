@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import { Counter } from '../counter/counter';
 import { Button } from '../Button/button';
-import { MAX, MIN, DEFAULT_FROM_VALUE } from './consts';
+import { MAX, MIN, DEFAULT_FORM_VALUE } from './consts';
 import {
   SET_NAME_ACTION,
   SET_TEXT_ACTION,
@@ -13,7 +13,7 @@ import { reducer } from './reducer';
 export const ReviewForm = () => {
   const [{ name, text, rating }, dispatch] = useReducer(
     reducer,
-    DEFAULT_FROM_VALUE
+    DEFAULT_FORM_VALUE
   );
 
   const setName = (name) => dispatch({ type: SET_NAME_ACTION, payload: name });
