@@ -8,15 +8,10 @@ export const RestaurantPage = () => {
 
   return (
     <>
-      <nav
-        style={{
-          display: 'flex',
-          borderLeft: 'solid 1px black',
-          borderBottom: 'none',
-        }}
-      >
+      <nav>
         {restaurants.map(({ id, name }) => (
           <Button
+            type="button"
             key={id}
             isActive={id === restaurant.id}
             onClick={() => handleChooseRestaurant(id)}
