@@ -21,6 +21,9 @@ export const RestaurantPage = () => {
       </nav>
 
       {!!restaurant && <Restaurant restaurant={restaurant} />}
+      {!!restaurant && <Restaurant restaurant={restaurant} />}
+      {!!restaurant && <Restaurant restaurant={restaurant} />}
+      {!!restaurant && <Restaurant restaurant={restaurant} />}
     </>
   );
 };
