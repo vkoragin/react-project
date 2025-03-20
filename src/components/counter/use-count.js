@@ -5,16 +5,12 @@ export const useCount = () => {
   const [count, setCount] = useState(0);
 
   const increment = useCallback(() => {
-    if (count < MAX) {
-      setCount((prev) => prev + 1);
-    }
-  }, [count]);
+    setCount((prev) => (prev < MAX ? prev + 1 : prev));
+  }, []);
 
   const decrement = useCallback(() => {
-    if (count > MIN) {
-      setCount((prev) => prev - 1);
-    }
-  }, [count]);
+    setCount((prev) => (prev > MIN ? prev - 1 : prev));
+  }, []);
 
   return {
     count,
