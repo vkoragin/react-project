@@ -1,0 +1,13 @@
+.header,
+.footer {
+  padding: 16px;
+  border: solid 1px black;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.footer {
+  margin-top: 24px;
+}
