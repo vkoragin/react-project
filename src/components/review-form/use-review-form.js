@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useCallback } from 'react';
 import { MAX, MIN, DEFAULT_FORM_VALUE } from './consts';
 import {
   SET_NAME_ACTION,
@@ -14,19 +14,32 @@ export const useReviewForm = () => {
     DEFAULT_FORM_VALUE
   );
 
-  const setName = (name) => dispatch({ type: SET_NAME_ACTION, payload: name });
-  const setText = (text) => dispatch({ type: SET_TEXT_ACTION, payload: text });
-  const incrementRating = () => {
+  const setName = useCallback(
+    (name) => dispatch({ type: SET_NAME_ACTION, payload: name }),
+    []
+  );
+
+  const setText = useCallback(
+    (text) => dispatch({ type: SET_TEXT_ACTION, payload: text }),
+    []
+  );
+
+  const incrementRating = useCallback(() => {
     if (rating < MAX) {
       dispatch({ type: SET_RATING_ACTION, payload: rating + 1 });
     }
-  };
-  const decrementRating = () => {
+  }, [rating]);
+
+  const decrementRating = useCallback(() => {
     if (rating > MIN) {
       dispatch({ type: SET_RATING_ACTION, payload: rating - 1 });
     }
-  };
-  const clearForm = () => dispatch({ type: CLEAR_FORM_ACTION });
+  }, [rating]);
+
+  const clearForm = useCallback(
+    () => dispatch({ type: CLEAR_FORM_ACTION }),
+    []
+  );
 
   return {
     name,
