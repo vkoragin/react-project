@@ -1,15 +1,14 @@
 import { ProgressBar } from '../progress-bar/progress-bar';
+import { Header } from '../header/header';
 import styles from './layout.module.css';
-import { ToggleTheme } from '../toggle-theme/toggle-theme';
 
 export const Layout = ({ children }) => {
   return (
     <>
       <ProgressBar />
-      <header className={styles.header}>
-        <h2>Header</h2>
-        <ToggleTheme />
-      </header>
+      <section className={styles.headerWrapper}>
+        <Header />
+      </section>
       <section>{children}</section>
       <footer className={styles.footer}>Footer</footer>
     </>
