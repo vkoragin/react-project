@@ -8,7 +8,7 @@ export const UserAuth = () => {
 
   return (
     <div className={styles.userAuth}>
-      {user && <p>{user}</p>}
+      {!!user && <p>{user}</p>}
 
       <Button
         onClick={user ? logout : login}
