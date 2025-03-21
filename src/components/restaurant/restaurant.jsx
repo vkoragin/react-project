@@ -8,10 +8,22 @@ export const Restaurant = ({ restaurant }) => {
 
   return (
     <section className={styles.restaurant}>
-      <h2>{name}</h2>
-      {!!menu.length && <Menu menu={menu} />}
-      {!!reviews.length && <Reviews reviews={reviews} />}
-      <ReviewForm />
+      <div className={styles.wrapper}>
+        <h2>{name}</h2>
+      </div>
+      {!!menu.length && (
+        <div className={styles.wrapper}>
+          <Menu menu={menu} />
+        </div>
+      )}
+      {!!reviews.length && (
+        <div className={styles.wrapper}>
+          <Reviews reviews={reviews} />
+        </div>
+      )}
+      <div className={styles.wrapper}>
+        <ReviewForm />
+      </div>
     </section>
   );
 };
