@@ -1,5 +1,5 @@
 import { Counter } from '../counter/counter';
-import { Button } from '../Button/button';
+import { Button } from '../button/button';
 import { useReviewForm } from './use-review-form';
 import styles from './review-form.module.css';
 

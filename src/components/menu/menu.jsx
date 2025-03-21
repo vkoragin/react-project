@@ -1,5 +1,4 @@
 import { Dish } from '../dish/dish';
-import styles from './menu.module.css';
 
 export const Menu = ({ menu }) => {
   return (
@@ -7,7 +6,7 @@ export const Menu = ({ menu }) => {
       <h3>Меню</h3>
       <ul>
         {menu.map(({ id, name }) => (
-          <li key={id} className={styles.menuItem}>
+          <li key={id}>
             <Dish name={name} />
           </li>
         ))}
