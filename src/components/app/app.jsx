@@ -1,10 +1,14 @@
 import { Layout } from '../layout/layout';
 import { RestaurantPage } from '../restaurant-page/restaurant-page';
+import { ThemeContext } from '../theme-context/theme-context';
+import './app.css';
 
 export const App = () => {
   return (
-    <Layout>
-      <RestaurantPage />
-    </Layout>
+    <ThemeContext>
+      <Layout>
+        <RestaurantPage />
+      </Layout>
+    </ThemeContext>
   );
 };
