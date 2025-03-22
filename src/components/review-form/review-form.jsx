@@ -1,6 +1,7 @@
 import { Counter } from '../counter/counter';
-import { Button } from '../Button/button';
+import { Button } from '../button/button';
 import { useReviewForm } from './use-review-form';
+import styles from './review-form.module.css';
 
 export const ReviewForm = () => {
   const {
@@ -15,9 +16,9 @@ export const ReviewForm = () => {
   } = useReviewForm();
 
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <h3>Добавить отзыв</h3>
-      <label style={{ display: 'flex', gap: '4px', marginBottom: '4px' }}>
+      <label className={styles.label}>
         <input
           type="text"
           value={name}
@@ -25,7 +26,7 @@ export const ReviewForm = () => {
         />
         <span>Имя</span>
       </label>
-      <label style={{ display: 'flex', gap: '4px', marginBottom: '4px' }}>
+      <label className={styles.label}>
         <input
           type="text"
           value={text}
@@ -34,7 +35,7 @@ export const ReviewForm = () => {
         <span>Текст</span>
       </label>
 
-      <div style={{ marginBottom: '4px' }}>
+      <div className={styles.counterWrapper}>
         <Counter
           count={rating}
           increment={incrementRating}

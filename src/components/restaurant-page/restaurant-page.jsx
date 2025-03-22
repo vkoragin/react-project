@@ -1,13 +1,14 @@
 import { restaurants } from '../../mocks/restaurants';
 import { Restaurant } from '../restaurant/restaurant';
-import { Button } from '../Button/button';
+import { Button } from '../button/button';
 import { useRestaurantPage } from './use-restaurant-page';
+import styles from './restaurant-page.module.css';
 
 export const RestaurantPage = () => {
   const { restaurant, handleChooseRestaurant } = useRestaurantPage();
 
   return (
-    <>
+    <section className={styles.restaurantPage}>
       <nav>
         {restaurants.map(({ id, name }) => (
           <Button
@@ -24,6 +25,6 @@ export const RestaurantPage = () => {
       {!!restaurant && <Restaurant restaurant={restaurant} />}
       {!!restaurant && <Restaurant restaurant={restaurant} />}
       {!!restaurant && <Restaurant restaurant={restaurant} />}
-    </>
+    </section>
   );
 };
