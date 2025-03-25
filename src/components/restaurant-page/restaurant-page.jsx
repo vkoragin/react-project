@@ -1,30 +1,43 @@
-import { restaurants } from '../../mocks/restaurants';
+import { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Restaurant } from '../restaurant/restaurant';
-import { Button } from '../button/button';
-import { useRestaurantPage } from './use-restaurant-page';
+import { RestaurantsTabContainer } from '../restaurants-tab/restaurants-tab-container';
+import { selectRestaurantsIds } from '../../redux/entities/restaurant/slice';
 import styles from './restaurant-page.module.css';
 
 export const RestaurantPage = () => {
-  const { restaurant, handleChooseRestaurant } = useRestaurantPage();
+  const restaurantsIds = useSelector(selectRestaurantsIds);
+  const [activeRestaurantId, setActiveRestaurantId] = useState(
+    restaurantsIds[0]
+  );
+
+  const handleSetActiveRestaurantsId = useCallback(
+    (id) => {
+      if (activeRestaurantId === id) {
+        return;
+      }
+
+      setActiveRestaurantId(id);
+    },
+    [activeRestaurantId]
+  );
 
   return (
     <section className={styles.restaurantPage}>
       <nav>
-        {restaurants.map(({ id, name }) => (
-          <Button
-            type="button"
+        {restaurantsIds.map((id) => (
+          <RestaurantsTabContainer
             key={id}
-            isActive={id === restaurant.id}
-            onClick={() => handleChooseRestaurant(id)}
-            text={name}
+            id={id}
+            isActive={id === activeRestaurantId}
+            onClick={() => handleSetActiveRestaurantsId(id)}
           />
         ))}
       </nav>
 
-      {!!restaurant && <Restaurant restaurant={restaurant} />}
-      {!!restaurant && <Restaurant restaurant={restaurant} />}
-      {!!restaurant && <Restaurant restaurant={restaurant} />}
-      {!!restaurant && <Restaurant restaurant={restaurant} />}
+      {!!activeRestaurantId && (
+        <Restaurant key={activeRestaurantId} id={activeRestaurantId} />
+      )}
     </section>
   );
 };
