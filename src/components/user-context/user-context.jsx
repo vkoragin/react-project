@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { UserContext as UserContextProvider } from '.';
 
 export const UserContext = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const login = () => {
+  const login = useCallback(() => {
     setUser('Виктор Корягин');
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
-  };
+  }, []);
 
   return (
     <UserContextProvider value={{ user, login, logout }}>
