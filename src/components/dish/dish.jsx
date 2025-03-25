@@ -9,7 +9,7 @@ import styles from './dish.module.css';
 export const Dish = ({ id }) => {
   const dish = useSelector((state) => selectDisheById(state, id));
   const { name } = dish;
-  const { count, increment, decrement } = useCount();
+  const { count, increment, decrement } = useCount(id);
   const { user } = use(UserContext);
 
   return (

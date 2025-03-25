@@ -26,11 +26,11 @@ export const cartSlice = createSlice({
 
         return acc;
       }, []),
-    selectAmountByHeadphoneId: (state, id) => state[id],
+    selectAmountByRestaurantId: (state, id) => state[id],
   },
 });
 
-export const { selectCartItems, selectAmountByHeadphoneId } =
+export const { selectCartItems, selectAmountByRestaurantId } =
   cartSlice.selectors;
 
 export const { addToCart, removeFromCart } = cartSlice.actions;
