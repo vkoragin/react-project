@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
-import { useParams, NavLink, Outlet } from 'react-router';
+import { useParams, Outlet } from 'react-router';
 import { selectRestaurantById } from '../../redux/entities/restaurant/slice';
 import styles from './restaurant-page.module.css';
+import { RestaurantNav } from '../../components/restaurant-nav/restaurant-nav';
 
 export const RestaurantPage = () => {
   const { restaurantId } = useParams();
@@ -14,10 +15,7 @@ export const RestaurantPage = () => {
       <div className={styles.wrapper}>
         <h2>{name}</h2>
       </div>
-      <nav>
-        <NavLink to={'menu'}>Меню</NavLink>
-        <NavLink to={'reviews'}>Отзывы</NavLink>
-      </nav>
+      <RestaurantNav />
       <Outlet />
     </section>
   );

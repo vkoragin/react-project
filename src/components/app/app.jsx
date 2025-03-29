@@ -10,6 +10,7 @@ import { MenuPage } from '../../pages/menu-page/menu-page';
 import { ReviewsPage } from '../../pages/reviews-page/reviews-page';
 import { RestaurantPage } from '../../pages/restaurant-page/restaurant-page';
 import { DishPage } from '../../pages/dish-page/dish-page';
+import { PageNotFound } from '../../pages/page-not-found/page-not-found';
 
 import './app.css';
 
@@ -30,12 +31,7 @@ export const App = () => {
                   </Route>
                 </Route>
                 <Route path="/dish/:dishId" element={<DishPage />} />
-                <Route
-                  path="*"
-                  element={
-                    <h2 style={{ textAlign: 'center' }}>404 Page not found</h2>
-                  }
-                />
+                <Route path="*" element={<PageNotFound />} />
               </Route>
             </Routes>
           </BrowserRouter>
