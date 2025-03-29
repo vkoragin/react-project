@@ -5,12 +5,9 @@ import styles from './restaurant-page.module.css';
 
 export const RestaurantPage = () => {
   const { restaurantId } = useParams();
-
-  const restaurant = useSelector((state) =>
+  const { name } = useSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
-
-  const { name } = restaurant;
 
   return (
     <section className={styles.restaurant}>

@@ -5,8 +5,7 @@ import { selectRestaurantById } from '../../redux/entities/restaurant/slice';
 
 export const MenuPage = () => {
   const { restaurantId } = useParams();
-
-  const restaurant = useSelector((state) =>
+  const { menu } = useSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
 
@@ -14,7 +13,7 @@ export const MenuPage = () => {
     <>
       <h3>Меню</h3>
       <ul>
-        {restaurant.menu.map((id) => (
+        {menu.map((id) => (
           <li key={id}>
             <Dish id={id} />
           </li>

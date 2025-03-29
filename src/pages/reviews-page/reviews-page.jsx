@@ -8,29 +8,22 @@ import { selectRestaurantById } from '../../redux/entities/restaurant/slice';
 
 export const ReviewsPage = () => {
   const { restaurantId } = useParams();
-
-  const restaurant = useSelector((state) =>
+  const { reviews } = useSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
-
   const { user } = use(UserContext);
 
   return (
     <>
       <h3>Отзывы</h3>
       <ul>
-        {restaurant.reviews.map((id) => (
+        {reviews.map((id) => (
           <li key={id}>
             <Review id={id} />
           </li>
         ))}
       </ul>
-
-      {!!user && (
-        <div>
-          <ReviewForm />
-        </div>
-      )}
+      {!!user && <ReviewForm />}
     </>
   );
 };

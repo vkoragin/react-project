@@ -13,7 +13,6 @@ export const RestaurantsPage = () => {
           <RestaurantsTabContainer key={id} id={id} />
         ))}
       </nav>
-
       <Outlet />
     </section>
   );

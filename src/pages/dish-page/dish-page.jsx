@@ -8,24 +8,21 @@ import { Counter } from '../../components/counter/counter';
 
 export const DishPage = () => {
   const { dishId } = useParams();
-
-  const dish = useSelector((state) => selectDishById(state, dishId));
-
-  const { name, ingredients, price } = dish;
-
+  const { name, ingredients, price } = useSelector((state) =>
+    selectDishById(state, dishId)
+  );
   const { count, increment, decrement } = useCount(dishId);
   const { user } = use(UserContext);
 
   return (
     <section>
       <h3>{name}</h3>
-      <p>Состав:</p>
       <ul>
         {ingredients.map((ingredient) => (
           <li key={Math.random().toString(16).slice(2)}>{ingredient}</li>
         ))}
       </ul>
-      <p>Цена {price} р.</p>
+      <p>Price: {price} $</p>
       {!!user && (
         <Counter count={count} increment={increment} decrement={decrement} />
       )}
