@@ -1,11 +1,7 @@
 import { NavLink } from 'react-router';
 import styles from './restaurant-nav.module.css';
+import { LINKS } from './consts';
 import classNames from 'classnames';
-
-const LINKS = [
-  { path: 'menu', name: 'Меню' },
-  { path: 'reviews', name: 'Отзывы' },
-];
 
 export const RestaurantNav = () => {
   return (
