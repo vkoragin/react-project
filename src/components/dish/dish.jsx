@@ -5,6 +5,7 @@ import { useCount } from '../counter/use-count';
 import { UserContext } from '../user-context';
 import { selectDishById } from '../../redux/entities/menu/slice';
 import styles from './dish.module.css';
+import { NavLink } from 'react-router';
 
 export const Dish = ({ id }) => {
   const dish = useSelector((state) => selectDishById(state, id));
@@ -14,7 +15,7 @@ export const Dish = ({ id }) => {
 
   return (
     <div className={styles.dish}>
-      {name}
+      <NavLink to={`/dish/${id}`}>{name}</NavLink>
       {!!user && (
         <Counter count={count} increment={increment} decrement={decrement} />
       )}

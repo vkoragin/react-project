@@ -8,7 +8,7 @@ export const RestaurantsTabContainer = ({ id }) => {
   const { name } = restaurant;
 
   return (
-    <NavLink key={id} type="button" to={`/restaurants/${id}`}>
+    <NavLink key={id} to={`/restaurants/${id}`}>
       {name}
     </NavLink>
   );
