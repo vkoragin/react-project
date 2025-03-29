@@ -1,14 +1,19 @@
 import { use } from 'react';
 import { useSelector } from 'react-redux';
-import { Menu } from '../menu/menu';
-import { Reviews } from '../reviews/reviews';
-import { ReviewForm } from '../review-form/review-form';
-import { UserContext } from '../user-context';
+import { Menu } from '../../components/menu/menu';
+import { Reviews } from '../../components/reviews/reviews';
+import { ReviewForm } from '../../components/review-form/review-form';
+import { UserContext } from '../../components/user-context';
 import { selectRestaurantById } from '../../redux/entities/restaurant/slice';
-import styles from './restaurant.module.css';
+import styles from './restaurant-page.module.css';
+import { useParams } from 'react-router';
 
-export const Restaurant = ({ id }) => {
-  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+export const RestaurantPage = () => {
+  const { restaurantId } = useParams();
+
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, restaurantId)
+  );
   const { name, menu, reviews } = restaurant;
 
   const { user } = use(UserContext);

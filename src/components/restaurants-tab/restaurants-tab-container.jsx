@@ -1,23 +1,15 @@
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../redux/entities/restaurant/slice';
-import { Button } from '../button/button';
+import { NavLink } from 'react-router';
 
-export const RestaurantsTabContainer = ({ id, onClick, isActive }) => {
+export const RestaurantsTabContainer = ({ id }) => {
   const restaurant = useSelector((state) => selectRestaurantById(state, id));
-
-  if (!restaurant) {
-    return null;
-  }
 
   const { name } = restaurant;
 
   return (
-    <Button
-      key={id}
-      type="button"
-      text={name}
-      onClick={onClick}
-      isActive={isActive}
-    />
+    <NavLink key={id} type="button" to={`/restaurants/${id}`}>
+      {name}
+    </NavLink>
   );
 };
