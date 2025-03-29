@@ -9,12 +9,12 @@ const initialState = {
   }, {}),
 };
 
-export const menuSlice = createSlice({
-  name: 'menuSlice',
+export const dishSlice = createSlice({
+  name: 'dishSlice',
   initialState,
   selectors: {
-    selectDisheById: (state, id) => state.menu[id],
+    selectDishById: (state, id) => state.menu[id],
   },
 });
 
-export const { selectDisheById } = menuSlice.selectors;
+export const { selectDishById } = dishSlice.selectors;
