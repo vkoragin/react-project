@@ -7,11 +7,9 @@ export const DishCounter = ({ id }) => {
   const { count, increment, decrement } = useCount(id);
   const { user } = use(UserContext);
 
-  return (
-    <>
-      {!!user && (
-        <Counter count={count} increment={increment} decrement={decrement} />
-      )}
-    </>
-  );
+  if (!user) {
+    return null;
+  }
+
+  return <Counter count={count} increment={increment} decrement={decrement} />;
 };
