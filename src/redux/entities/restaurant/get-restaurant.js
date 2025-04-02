@@ -19,7 +19,6 @@ export const getRestaurant = createAsyncThunk(
   },
   {
     condition: (restaurantId, { getState }) => {
-      console.log(!selectRestaurantIds(getState()).includes(restaurantId));
       return !selectRestaurantIds(getState()).includes(restaurantId);
     },
   }
