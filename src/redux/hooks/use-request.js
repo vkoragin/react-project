@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectRequestStatus } from '../entities/request/slice';
 
 export const useRequest = (thunk, ...params) => {
-  console.log(...params);
   const dispatch = useDispatch();
 
   const [request, setRequest] = useState();
