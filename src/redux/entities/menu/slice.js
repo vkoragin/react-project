@@ -8,7 +8,7 @@ export const menuSlice = createSlice({
   initialState: entityAdapter.getInitialState(),
   extraReducers: (builder) =>
     builder.addCase(getMenu.fulfilled, (state, { payload }) => {
-      entityAdapter.setAll(state, payload);
+      entityAdapter.addMany(state, payload);
     }),
 });
 
