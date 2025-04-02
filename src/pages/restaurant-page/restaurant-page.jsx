@@ -14,16 +14,6 @@ export const RestaurantPage = () => {
     selectRestaurantById(state, restaurantId)
   );
 
-  if (restaurant) {
-    <section className={styles.restaurant}>
-      <div className={styles.wrapper}>
-        <h2>{restaurant.name}</h2>
-      </div>
-      <RestaurantNav />
-      <Outlet />
-    </section>;
-  }
-
   if (requestStatus === IDLE || requestStatus === PENDING) {
     return 'loading...';
   }
@@ -31,4 +21,18 @@ export const RestaurantPage = () => {
   if (requestStatus === REJECTED) {
     return 'error';
   }
+
+  return (
+    <>
+      {restaurant && (
+        <section className={styles.restaurant}>
+          <div className={styles.wrapper}>
+            <h2>{restaurant.name}</h2>
+          </div>
+          <RestaurantNav />
+          <Outlet />
+        </section>
+      )}
+    </>
+  );
 };

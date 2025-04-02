@@ -12,15 +12,6 @@ export const DishPage = () => {
   const requestStatus = useRequest(getDish, dishId);
   const dish = useSelector((state) => selectDishById(state, dishId));
 
-  if (dish) {
-    <section>
-      <h3>{dish.name}</h3>
-      <Ingredients ingredients={dish.ingredients} />
-      <p>Price: {dish.price} $</p>
-      <DishCounter id={dish.dishId} />
-    </section>;
-  }
-
   if (requestStatus === IDLE || requestStatus === PENDING) {
     return 'loading...';
   }
@@ -28,4 +19,17 @@ export const DishPage = () => {
   if (requestStatus === REJECTED) {
     return 'error';
   }
+
+  return (
+    <>
+      {dish && (
+        <section>
+          <h3>{dish.name}</h3>
+          <Ingredients ingredients={dish.ingredients} />
+          <p>Price: {dish.price} $</p>
+          <DishCounter id={dish.dishId} />
+        </section>
+      )}
+    </>
+  );
 };
