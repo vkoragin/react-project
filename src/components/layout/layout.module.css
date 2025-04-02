@@ -3,6 +3,15 @@
   border: solid 1px black;
 }
 
+.main {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.cart {
+  margin-top: 24px;
+}
+
 .headerWrapper {
   margin-bottom: 24px;
 }
