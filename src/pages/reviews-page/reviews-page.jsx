@@ -4,10 +4,12 @@ import { Reviews } from '../../components/reviews/reviews';
 import { useRequest } from '../../redux/hooks/use-request';
 import { getReviews } from '../../redux/entities/reviews/get-reviews';
 import { selectReviewsIds } from '../../redux/entities/reviews/slice';
+import { getUsers } from '../../redux/entities/users/get-users';
 
 export const ReviewsPage = () => {
   const { restaurantId } = useParams();
   const requestStatus = useRequest(getReviews, restaurantId);
+  useRequest(getUsers);
   const reviews = useSelector(selectReviewsIds);
 
   if (requestStatus === 'idle' || requestStatus === 'pending') {

@@ -14,7 +14,7 @@ export const reviewsSlice = createSlice({
 
 export const { selectRequestStatus } = reviewsSlice.selectors;
 
-const selectMenuSlice = (state) => state.menu;
+const selectReviewsSlice = (state) => state.reviews;
 
 export const { selectById: selectReviewById, selectIds: selectReviewsIds } =
-  entityAdapter.getSelectors(selectMenuSlice);
+  entityAdapter.getSelectors(selectReviewsSlice);

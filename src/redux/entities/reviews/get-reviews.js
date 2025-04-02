@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getReviews = createAsyncThunk(
-  'menu/getMenu',
+  'reviews/getReviews',
   async (restaurantId, { rejectWithValue }) => {
     const response = await fetch(
       `http://localhost:3001/api/reviews?restaurantId=${restaurantId}`
