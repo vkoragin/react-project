@@ -17,7 +17,6 @@ export const { selectRequestStatus } = restaurantSlice.selectors;
 const selectRestaurantSlice = (state) => state.restaurant;
 
 export const {
-  selectTotal: selectRestaurantTotal,
   selectById: selectRestaurantById,
   selectIds: selectRestaurantIds,
 } = entityAdapter.getSelectors(selectRestaurantSlice);
