@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useParams, Outlet } from 'react-router';
-import { selectRestaurantById } from '../../redux/entities/restaurant/slice';
+import { selectRestaurantById } from '../../redux/entities/restaurants/slice';
 import styles from './restaurant-page.module.css';
 import { RestaurantNav } from '../../components/restaurant-nav/restaurant-nav';
 
