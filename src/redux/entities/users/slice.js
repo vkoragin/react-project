@@ -16,8 +16,5 @@ export const { selectRequestStatus } = usersSlice.selectors;
 
 const selectUsersSlice = (state) => state.users;
 
-export const {
-  selectById: selectUserById,
-  selectIds: selectUsersIds,
-  selectTotal: selectUsersTotal,
-} = entityAdapter.getSelectors(selectUsersSlice);
+export const { selectById: selectUserById, selectTotal: selectUsersTotal } =
+  entityAdapter.getSelectors(selectUsersSlice);

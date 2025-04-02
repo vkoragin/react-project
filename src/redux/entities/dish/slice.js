@@ -16,5 +16,5 @@ export const { selectRequestStatus } = dishSlice.selectors;
 
 const selectDishSlice = (state) => state.dish;
 
-export const { selectById: selecttDishById, selectIds: selectDishIds } =
+export const { selectIds: selectDishIds } =
   entityAdapter.getSelectors(selectDishSlice);

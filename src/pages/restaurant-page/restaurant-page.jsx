@@ -5,6 +5,7 @@ import { RestaurantNav } from '../../components/restaurant-nav/restaurant-nav';
 import { useRequest } from '../../redux/hooks/use-request';
 import { getRestaurant } from '../../redux/entities/restaurant/get-restaurant';
 import { selectRestaurantById } from '../../redux/entities/restaurant/slice';
+import { IDLE, PENDING, REJECTED } from '../../redux/consts';
 
 export const RestaurantPage = () => {
   const { restaurantId } = useParams();
@@ -13,11 +14,11 @@ export const RestaurantPage = () => {
     selectRestaurantById(state, restaurantId)
   );
 
-  if (requestStatus === 'idle' || requestStatus === 'pending') {
+  if (requestStatus === IDLE || requestStatus === PENDING) {
     return 'loading...';
   }
 
-  if (requestStatus === 'rejected') {
+  if (requestStatus === REJECTED) {
     return 'error';
   }
 

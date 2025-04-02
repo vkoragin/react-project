@@ -4,17 +4,18 @@ import { Dishs } from '../../components/dishs/dishs';
 import { useRequest } from '../../redux/hooks/use-request';
 import { getMenu } from '../../redux/entities/menu/get-menu';
 import { selectMenuIds } from '../../redux/entities/menu/slice';
+import { IDLE, PENDING, REJECTED } from '../../redux/consts';
 
 export const MenuPage = () => {
   const { restaurantId } = useParams();
   const requestStatus = useRequest(getMenu, restaurantId);
   const menu = useSelector(selectMenuIds);
 
-  if (requestStatus === 'idle' || requestStatus === 'pending') {
+  if (requestStatus === IDLE || requestStatus === PENDING) {
     return 'loading...';
   }
 
-  if (requestStatus === 'rejected') {
+  if (requestStatus === REJECTED) {
     return 'error';
   }
 

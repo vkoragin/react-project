@@ -5,17 +5,18 @@ import { Ingredients } from '../../components/ingredients/ingredients';
 import { DishCounter } from '../../components/dish-conter/dish-counter';
 import { useRequest } from '../../redux/hooks/use-request';
 import { getDish } from '../../redux/entities/dish/get-dish';
+import { IDLE, PENDING, REJECTED } from '../../redux/consts';
 
 export const DishPage = () => {
   const { dishId } = useParams();
   const requestStatus = useRequest(getDish, dishId);
   const dish = useSelector((state) => selectDishById(state, dishId));
 
-  if (requestStatus === 'idle' || requestStatus === 'pending') {
+  if (requestStatus === IDLE || requestStatus === PENDING) {
     return 'loading...';
   }
 
-  if (requestStatus === 'rejected') {
+  if (requestStatus === REJECTED) {
     return 'error';
   }
 

@@ -4,16 +4,17 @@ import { selectRestaurantsIds } from '../../redux/entities/restaurants/slice';
 import { Outlet } from 'react-router';
 import { getRestaurants } from '../../redux/entities/restaurants/get-restaurants';
 import { useRequest } from '../../redux/hooks/use-request';
+import { IDLE, PENDING, REJECTED } from '../../redux/consts';
 
 export const RestaurantsPage = () => {
   const requestStatus = useRequest(getRestaurants);
   const restaurantsIds = useSelector(selectRestaurantsIds);
 
-  if (requestStatus === 'idle' || requestStatus === 'pending') {
+  if (requestStatus === IDLE || requestStatus === PENDING) {
     return 'loading...';
   }
 
-  if (requestStatus === 'rejected') {
+  if (requestStatus === REJECTED) {
     return 'error';
   }
 
