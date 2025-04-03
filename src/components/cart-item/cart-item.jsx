@@ -4,5 +4,5 @@ import { selectDishById } from '../../redux/entities/menu/slice';
 export const CartItem = ({ id, amount }) => {
   const dish = useSelector((state) => selectDishById(state, id));
 
-  return `${dish?.name ?? ''} - ${amount}`;
+  return dish ? `${dish.name} - ${amount}` : null;
 };
