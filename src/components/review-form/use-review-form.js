@@ -7,6 +7,8 @@ import {
   CLEAR_FORM_ACTION,
 } from './actions';
 import { reducer } from './reducer';
+import { useAddReviewMutation } from '../../redux/servicies/api';
+import { useParams } from 'react-router';
 
 export const useReviewForm = () => {
   const [{ name, text, rating }, dispatch] = useReducer(
@@ -41,6 +43,14 @@ export const useReviewForm = () => {
     []
   );
 
+  const { restaurantId } = useParams();
+
+  const [addReview, { isLoading: isAddReviewLoading }] = useAddReviewMutation();
+
+  const handleSubmit = (review) => {
+    addReview({ restaurantId, review });
+  };
+
   return {
     name,
     text,
@@ -50,5 +60,7 @@ export const useReviewForm = () => {
     incrementRating,
     decrementRating,
     clearForm,
+    isAddReviewLoading,
+    handleSubmit,
   };
 };

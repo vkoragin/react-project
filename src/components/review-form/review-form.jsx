@@ -13,6 +13,8 @@ export const ReviewForm = () => {
     incrementRating,
     decrementRating,
     clearForm,
+    isAddReviewLoading,
+    handleSubmit,
   } = useReviewForm();
 
   return (
@@ -43,7 +45,17 @@ export const ReviewForm = () => {
         />
       </div>
 
-      <Button type="button" onClick={clearForm} text="Очистить" />
+      <div className={styles.buttons}>
+        <Button type="button" onClick={clearForm} text="Очистить" />
+        <Button
+          type="submit"
+          onClick={() =>
+            handleSubmit({ text, rating, user: 'hr83h29h9h9u12h9213' })
+          }
+          text="Добавить"
+          isActive={isAddReviewLoading}
+        />
+      </div>
     </form>
   );
 };
