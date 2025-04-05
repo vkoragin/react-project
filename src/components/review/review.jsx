@@ -1,13 +1,17 @@
-import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectReviewById } from '../../redux/entities/reviews/slice';
-import { selectUserById } from '../../redux/entities/users/slice';
+import { useGetUsersQuery } from '../../redux/servicies/api';
 
-export const Review = ({ id }) => {
-  const review = useSelector((state) => selectReviewById(state, id));
-  const user = useSelector((state) => selectUserById(state, review.userId));
+export const Review = ({ review }) => {
+  const { userId, text } = review;
+  const { data: user } = useGetUsersQuery(undefined, {
+    selectFromResult: (result) => ({
+      ...result,
+      data: result.data?.find(({ id }) => id === userId),
+    }),
+  });
 
-  const showReview = useMemo(() => !!review && !!user, [review, user]);
+  if (!user?.name) {
+    return null;
+  }
 
-  return showReview ? <>{`${user.name}: ${review.text}`}</> : null;
+  return <>{`${user.name}: ${text}`}</>;
 };
