@@ -11,7 +11,7 @@ export const Reviews = ({ reviews }) => {
       <ul>
         {reviews.map((review) => (
           <li key={review.id}>
-            <Review review={review} />
+            <Review review={review} maintainerId={user?.id} />
           </li>
         ))}
       </ul>

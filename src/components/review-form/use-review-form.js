@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from 'react';
+import { useReducer, useCallback, useMemo } from 'react';
 import { MAX, MIN, DEFAULT_FORM_VALUE } from './consts';
 import {
   SET_NAME_ACTION,
@@ -7,10 +7,13 @@ import {
   CLEAR_FORM_ACTION,
 } from './actions';
 import { reducer } from './reducer';
-import { useAddReviewMutation } from '../../redux/servicies/api';
+import {
+  useAddReviewMutation,
+  useChangeReviewMutation,
+} from '../../redux/servicies/api';
 import { useParams } from 'react-router';
 
-export const useReviewForm = () => {
+export const useReviewForm = ({ review }) => {
   const [{ name, text, rating }, dispatch] = useReducer(
     reducer,
     DEFAULT_FORM_VALUE
@@ -46,10 +49,46 @@ export const useReviewForm = () => {
   const { restaurantId } = useParams();
 
   const [addReview, { isLoading: isAddReviewLoading }] = useAddReviewMutation();
+  const [changeReview, { isLoading: isChangeReviewLoading }] =
+    useChangeReviewMutation();
 
-  const handleSubmit = (review) => {
-    addReview({ restaurantId, review });
-  };
+  const isLoading = useMemo(
+    () => isAddReviewLoading || isChangeReviewLoading,
+    [isAddReviewLoading, isChangeReviewLoading]
+  );
+
+  const body = useMemo(() => {
+    return { text, rating, user: review?.userId };
+  }, [text, rating, review]);
+
+  const buttonText = useMemo(
+    () => (review ? 'Изменить' : 'Добавить'),
+    [review]
+  );
+
+  const headerText = useMemo(
+    () => (review ? 'Изменить отзыв' : 'Добавить отзыв'),
+    [review]
+  );
+
+  const handleAddReview = useCallback(
+    (review) => {
+      addReview({ restaurantId, review });
+    },
+    [addReview, restaurantId]
+  );
+
+  const handleChangeReview = useCallback(
+    (review) => {
+      changeReview({ restaurantId, review });
+    },
+    [changeReview, restaurantId]
+  );
+
+  const handleSubmit = useCallback(
+    () => (review ? handleChangeReview(body) : handleAddReview(body)),
+    [body, review, handleChangeReview, handleAddReview]
+  );
 
   return {
     name,
@@ -60,7 +99,9 @@ export const useReviewForm = () => {
     incrementRating,
     decrementRating,
     clearForm,
-    isAddReviewLoading,
+    isLoading,
     handleSubmit,
+    headerText,
+    buttonText,
   };
 };

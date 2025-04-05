@@ -1,17 +1,29 @@
-import { useGetUsersQuery } from '../../redux/servicies/api';
+import { Button } from '../button/button';
+import { ReviewForm } from '../review-form/review-form';
+import { useReview } from './use-review';
 
-export const Review = ({ review }) => {
-  const { userId, text } = review;
-  const { data: user } = useGetUsersQuery(undefined, {
-    selectFromResult: (result) => ({
-      ...result,
-      data: result.data?.find(({ id }) => id === userId),
-    }),
+export const Review = ({ review, maintainerId }) => {
+  const { isEdit, text, name, canChange, handleSetEdit } = useReview({
+    review,
+    maintainerId,
   });
 
-  if (!user?.name) {
+  if (!name) {
     return null;
   }
 
-  return <>{`${user.name}: ${text}`}</>;
+  return (
+    <>
+      {isEdit ? (
+        <ReviewForm review={review} />
+      ) : (
+        <>
+          {`${name}: ${text}`}{' '}
+          {canChange && (
+            <Button onClick={handleSetEdit} type="button" text="Изменить" />
+          )}
+        </>
+      )}
+    </>
+  );
 };
