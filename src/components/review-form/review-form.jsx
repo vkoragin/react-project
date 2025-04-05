@@ -53,7 +53,7 @@ export const ReviewForm = () => {
             handleSubmit({ text, rating, user: 'hr83h29h9h9u12h9213' })
           }
           text="Добавить"
-          isActive={isAddReviewLoading}
+          disabled={isAddReviewLoading}
         />
       </div>
     </form>
