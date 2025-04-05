@@ -20,7 +20,7 @@ export const DishPage = () => {
       <h3>{dish.name}</h3>
       <Ingredients ingredients={dish.ingredients} />
       <p>Price: {dish.price} $</p>
-      <DishCounter id={dish.dishId} />
+      <DishCounter id={dishId} />
     </section>
   );
 };
