@@ -1,24 +1,31 @@
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Reviews } from '../../components/reviews/reviews';
-import { useRequest } from '../../redux/hooks/use-request';
-import { getReviews } from '../../redux/entities/reviews/get-reviews';
-import { selectReviewsIds } from '../../redux/entities/reviews/slice';
-import { getUsers } from '../../redux/entities/users/get-users';
-import { IDLE, PENDING, REJECTED } from '../../redux/consts';
+import {
+  useGetUsersQuery,
+  useGetReviewsQuery,
+} from '../../redux/servicies/api';
 
 export const ReviewsPage = () => {
   const { restaurantId } = useParams();
-  const requestStatus = useRequest(getReviews, restaurantId);
-  useRequest(getUsers);
-  const reviews = useSelector(selectReviewsIds);
 
-  if (requestStatus === IDLE || requestStatus === PENDING) {
+  const { isLoading: isUsersLoading, isError: isUsersError } =
+    useGetUsersQuery();
+  const {
+    isFetching: isReviewsLoading,
+    isError: isReviewsError,
+    data: reviews,
+  } = useGetReviewsQuery(restaurantId);
+
+  const isLoading = isUsersLoading || isReviewsLoading;
+
+  const isError = isUsersError || isReviewsError;
+
+  if (isLoading) {
     return 'loading...';
   }
 
-  if (requestStatus === REJECTED) {
-    return 'error';
+  if (isError) {
+    return 'ERROR';
   }
 
   return (

@@ -5,7 +5,10 @@ export const UserContext = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const login = useCallback(() => {
-    setUser('Виктор Корягин');
+    setUser({
+      name: 'Sam',
+      id: 'dfb982e9-b432-4b7d-aec6-7f6ff2e6af54',
+    });
   }, []);
 
   const logout = useCallback(() => {

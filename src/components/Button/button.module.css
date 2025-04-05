@@ -2,10 +2,6 @@
   padding: 4px;
 }
 
-.active {
-  opacity: 0.5;
-}
-
 .light {
   background-color: none;
   color: black;
