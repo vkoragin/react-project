@@ -25,7 +25,7 @@ export const RestaurantPage = ({ children }) => {
   return (
     <section className={styles.restaurant}>
       <div className={styles.wrapper}>
-        <h2>{restaurant?.name}</h2>
+        <h2>{restaurant.name}</h2>
       </div>
       <RestaurantNav restaurantId={restaurantId} />
       {children}
