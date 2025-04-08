@@ -1,7 +1,19 @@
 import Link from 'next/link';
-// import styles from './navigation-link.module.css';
-// import classNames from 'classnames';
+import { usePathname } from 'next/navigation';
+import styles from './navigation-link.module.css';
+import classNames from 'classnames';
 
 export const NavigationLink = ({ to, text }) => {
-  return <Link href={to}>{text}</Link>;
+  const pathname = usePathname();
+
+  return (
+    <Link
+      href={to}
+      className={classNames({
+        [styles.isActive]: to === pathname,
+      })}
+    >
+      {text}
+    </Link>
+  );
 };
