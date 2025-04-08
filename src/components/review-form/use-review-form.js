@@ -11,9 +11,8 @@ import {
   useAddReviewMutation,
   useChangeReviewMutation,
 } from '../../redux/servicies/api';
-import { useParams } from 'react-router';
 
-export const useReviewForm = ({ review }) => {
+export const useReviewForm = ({ review, restaurantId }) => {
   const [{ name, text, rating }, dispatch] = useReducer(
     reducer,
     DEFAULT_FORM_VALUE
@@ -45,8 +44,6 @@ export const useReviewForm = ({ review }) => {
     () => dispatch({ type: CLEAR_FORM_ACTION }),
     []
   );
-
-  const { restaurantId } = useParams();
 
   const [addReview, { isLoading: isAddReviewLoading }] = useAddReviewMutation();
   const [changeReview, { isLoading: isChangeReviewLoading }] =

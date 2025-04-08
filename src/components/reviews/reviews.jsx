@@ -3,7 +3,7 @@ import { UserContext } from '../user-context';
 import { Review } from '../review/review';
 import { ReviewForm } from '../review-form/review-form';
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({ reviews, restaurantId }) => {
   const { user } = use(UserContext);
 
   return (
@@ -11,11 +11,15 @@ export const Reviews = ({ reviews }) => {
       <ul>
         {reviews.map((review) => (
           <li key={review.id}>
-            <Review review={review} maintainerId={user?.id} />
+            <Review
+              review={review}
+              maintainerId={user?.id}
+              restaurantId={restaurantId}
+            />
           </li>
         ))}
       </ul>
-      {!!user && <ReviewForm />}
+      {!!user && <ReviewForm restaurantId={restaurantId} />}
     </>
   );
 };
