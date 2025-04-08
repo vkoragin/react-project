@@ -1,5 +1,5 @@
 import styles from './dish.module.css';
-import { NavLink } from 'react-router';
+import Link from 'next/link';
 import { DishCounter } from '../dish-conter/dish-counter';
 
 export const Dish = ({ dish }) => {
@@ -7,7 +7,7 @@ export const Dish = ({ dish }) => {
 
   return (
     <div className={styles.dish}>
-      <NavLink to={`/dish/${id}`}>{name}</NavLink>
+      <Link href={`/dish/${id}`}>{name}</Link>
       <DishCounter id={id} />
     </div>
   );

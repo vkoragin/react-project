@@ -1,8 +1,8 @@
+'use client';
 import { RestaurantsTabContainer } from '../../restaurants-tab/restaurants-tab-container';
-import { Outlet } from 'react-router';
 import { useGetRestaurantsQuery } from '../../../redux/servicies/api';
 
-export const RestaurantsPage = () => {
+export const RestaurantsPage = ({ children }) => {
   const { data: restaurants, isLoading, isError } = useGetRestaurantsQuery();
 
   if (isLoading) {
@@ -20,7 +20,7 @@ export const RestaurantsPage = () => {
           <RestaurantsTabContainer key={id} id={id} name={name} />
         ))}
       </nav>
-      <Outlet />
+      {children}
     </section>
   );
 };

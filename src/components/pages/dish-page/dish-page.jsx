@@ -1,10 +1,10 @@
-import { useParams } from 'react-router';
+'use client';
+
 import { Ingredients } from '../../ingredients/ingredients';
 import { DishCounter } from '../../dish-conter/dish-counter';
 import { useGetDishQuery } from '../../../redux/servicies/api';
 
-export const DishPage = () => {
-  const { dishId } = useParams();
+export const DishPage = ({ dishId }) => {
   const { data: dish, isLoading, isError } = useGetDishQuery(dishId);
 
   if (isLoading) {

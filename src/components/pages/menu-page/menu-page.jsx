@@ -1,9 +1,9 @@
-import { useParams } from 'react-router';
+'use client';
+
 import { Dishs } from '../../dishs/dishs';
 import { useGetMenuQuery } from '../../../redux/servicies/api';
 
-export const MenuPage = () => {
-  const { restaurantId } = useParams();
+export const MenuPage = ({ restaurantId }) => {
   const { isLoading, isError, data: menu } = useGetMenuQuery(restaurantId);
 
   if (isLoading) {
