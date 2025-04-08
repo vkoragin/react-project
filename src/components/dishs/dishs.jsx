@@ -3,9 +3,9 @@ import { Dish } from '../dish/dish';
 export const Dishs = ({ menu }) => {
   return (
     <ul>
-      {menu.map((id) => (
-        <li key={id}>
-          <Dish id={id} />
+      {menu.map((dish) => (
+        <li key={dish.id}>
+          <Dish dish={dish} />
         </li>
       ))}
     </ul>

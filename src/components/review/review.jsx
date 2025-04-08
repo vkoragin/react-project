@@ -1,13 +1,29 @@
-import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectReviewById } from '../../redux/entities/reviews/slice';
-import { selectUserById } from '../../redux/entities/users/slice';
+import { Button } from '../button/button';
+import { ReviewForm } from '../review-form/review-form';
+import { useReview } from './use-review';
 
-export const Review = ({ id }) => {
-  const review = useSelector((state) => selectReviewById(state, id));
-  const user = useSelector((state) => selectUserById(state, review.userId));
+export const Review = ({ review, maintainerId }) => {
+  const { isEdit, text, name, canChange, handleSetEdit } = useReview({
+    review,
+    maintainerId,
+  });
 
-  const showReview = useMemo(() => !!review && !!user, [review, user]);
+  if (!name) {
+    return null;
+  }
 
-  return showReview ? <>{`${user.name}: ${review.text}`}</> : null;
+  return (
+    <>
+      {isEdit ? (
+        <ReviewForm review={review} />
+      ) : (
+        <>
+          {`${name}: ${text}`}{' '}
+          {canChange && (
+            <Button onClick={handleSetEdit} type="button" text="Изменить" />
+          )}
+        </>
+      )}
+    </>
+  );
 };
