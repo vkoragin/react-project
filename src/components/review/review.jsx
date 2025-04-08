@@ -2,7 +2,7 @@ import { Button } from '../button/button';
 import { ReviewForm } from '../review-form/review-form';
 import { useReview } from './use-review';
 
-export const Review = ({ review, maintainerId, restaurantId }) => {
+export const Review = ({ review, maintainerId }) => {
   const { isEdit, text, name, canChange, handleSetEdit } = useReview({
     review,
     maintainerId,
@@ -15,7 +15,7 @@ export const Review = ({ review, maintainerId, restaurantId }) => {
   return (
     <>
       {isEdit ? (
-        <ReviewForm review={review} restaurantId={restaurantId} />
+        <ReviewForm review={review} />
       ) : (
         <>
           {`${name}: ${text}`}{' '}
