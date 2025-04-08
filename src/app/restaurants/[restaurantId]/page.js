@@ -1,10 +1,9 @@
-import { RestaurantPage } from '../../../components/pages/restaurant-page/restaurant-page';
+import { redirect } from 'next/navigation';
 
-const RestaurantPageWrapper = async ({ children, params }) => {
+const RestaurantPageWrapper = async ({ params }) => {
   const { restaurantId } = await params;
-  return (
-    <RestaurantPage restaurantId={restaurantId}>{children}</RestaurantPage>
-  );
+
+  redirect(`/restaurants/${restaurantId}/menu`);
 };
 
 export default RestaurantPageWrapper;
