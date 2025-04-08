@@ -13,7 +13,7 @@ export const ReviewForm = ({ review }) => {
     incrementRating,
     decrementRating,
     clearForm,
-    isAddReviewLoading,
+    isSubmitDisabled,
     handleSubmit,
     headerText,
     buttonText,
@@ -53,7 +53,7 @@ export const ReviewForm = ({ review }) => {
           type="submit"
           onClick={handleSubmit}
           text={buttonText}
-          disabled={isAddReviewLoading}
+          disabled={isSubmitDisabled}
         />
       </div>
     </form>

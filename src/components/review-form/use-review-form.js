@@ -52,7 +52,7 @@ export const useReviewForm = ({ review }) => {
   const [changeReview, { isLoading: isChangeReviewLoading }] =
     useChangeReviewMutation();
 
-  const isLoading = useMemo(
+  const isSubmitDisabled = useMemo(
     () => isAddReviewLoading || isChangeReviewLoading,
     [isAddReviewLoading, isChangeReviewLoading]
   );
@@ -99,7 +99,7 @@ export const useReviewForm = ({ review }) => {
     incrementRating,
     decrementRating,
     clearForm,
-    isLoading,
+    isSubmitDisabled,
     handleSubmit,
     headerText,
     buttonText,
