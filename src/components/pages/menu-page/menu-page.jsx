@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
-import { Dishs } from '../../components/dishs/dishs';
-import { useGetMenuQuery } from '../../redux/servicies/api';
+import { Dishs } from '../../dishs/dishs';
+import { useGetMenuQuery } from '../../../redux/servicies/api';
 
 export const MenuPage = () => {
   const { restaurantId } = useParams();

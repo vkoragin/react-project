@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
-import { Ingredients } from '../../components/ingredients/ingredients';
-import { DishCounter } from '../../components/dish-conter/dish-counter';
-import { useGetDishQuery } from '../../redux/servicies/api';
+import { Ingredients } from '../../ingredients/ingredients';
+import { DishCounter } from '../../dish-conter/dish-counter';
+import { useGetDishQuery } from '../../../redux/servicies/api';
 
 export const DishPage = () => {
   const { dishId } = useParams();

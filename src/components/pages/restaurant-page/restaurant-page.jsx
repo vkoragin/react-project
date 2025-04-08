@@ -1,7 +1,7 @@
 import { useParams, Outlet } from 'react-router';
 import styles from './restaurant-page.module.css';
-import { RestaurantNav } from '../../components/restaurant-nav/restaurant-nav';
-import { useGetRestaurantQuery } from '../../redux/servicies/api';
+import { RestaurantNav } from '../../restaurant-nav/restaurant-nav';
+import { useGetRestaurantQuery } from '../../../redux/servicies/api';
 
 export const RestaurantPage = () => {
   const { restaurantId } = useParams();

@@ -1,16 +1,16 @@
 import { Layout } from '../layout/layout';
-import { RestaurantsPage } from '../../pages/restaurants-page/restaurants-page';
 import { ThemeContext } from '../theme-context/theme-context';
 import { UserContext } from '../user-context/user-context';
 import { Provider } from 'react-redux';
 import { store } from '../../redux/store';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
-import { HomePage } from '../../pages/home-page/home-page';
-import { MenuPage } from '../../pages/menu-page/menu-page';
-import { ReviewsPage } from '../../pages/reviews-page/reviews-page';
-import { RestaurantPage } from '../../pages/restaurant-page/restaurant-page';
-import { DishPage } from '../../pages/dish-page/dish-page';
-import { PageNotFound } from '../../pages/page-not-found/page-not-found';
+import { RestaurantsPage } from '../pages/restaurants-page/restaurants-page';
+import { HomePage } from '../pages/home-page/home-page';
+import { MenuPage } from '../pages/menu-page/menu-page';
+import { ReviewsPage } from '../pages/reviews-page/reviews-page';
+import { RestaurantPage } from '../pages/restaurant-page/restaurant-page';
+import { DishPage } from '../pages/dish-page/dish-page';
+import { PageNotFound } from '../pages/page-not-found/page-not-found';
 
 import './app.css';
 
@@ -40,3 +40,5 @@ export const App = () => {
     </Provider>
   );
 };
+
+export default App;

@@ -1,9 +1,9 @@
 import { useParams } from 'react-router';
-import { Reviews } from '../../components/reviews/reviews';
+import { Reviews } from '../../reviews/reviews';
 import {
   useGetUsersQuery,
   useGetReviewsQuery,
-} from '../../redux/servicies/api';
+} from '../../../redux/servicies/api';
 
 export const ReviewsPage = () => {
   const { restaurantId } = useParams();
