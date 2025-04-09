@@ -1,5 +1,5 @@
 const RestaurantsPageWrapper = ({ children }) => {
-  return { children };
+  return <>{children}</>;
 };
 
 export default RestaurantsPageWrapper;

@@ -1,4 +1,5 @@
 'use client';
+
 import { RestaurantsTabContainer } from '../../restaurants-tab/restaurants-tab-container';
 import { useGetRestaurantsQuery } from '../../../redux/servicies/api';
 
