@@ -1,7 +1,5 @@
-import { RestaurantsPage } from '../../components/pages/restaurants-page/restaurants-page';
-
-const RestaurantsPageWrapper = () => {
-  return <RestaurantsPage />;
+const RestaurantsPageWrapper = ({ children }) => {
+  return { children };
 };
 
 export default RestaurantsPageWrapper;

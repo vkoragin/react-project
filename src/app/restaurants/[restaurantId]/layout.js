@@ -1,7 +1,10 @@
-import { RestaurantsPage } from '../../../components/pages/restaurants-page/restaurants-page';
+import { RestaurantPage } from '../../../components/pages/restaurant-page/restaurant-page';
 
-const RestaurantLayout = ({ children }) => {
-  return <RestaurantsPage>{children}</RestaurantsPage>;
+const RestaurantLayout = async ({ children, params }) => {
+  const { restaurantId } = await params;
+  return (
+    <RestaurantPage restaurantId={restaurantId}>{children}</RestaurantPage>
+  );
 };
 
 export default RestaurantLayout;

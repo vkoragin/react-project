@@ -32,7 +32,7 @@ export const ReviewsPage = ({ restaurantId }) => {
       {!!reviews.length && (
         <>
           <h3>Отзывы</h3>
-          <Reviews reviews={reviews} />
+          <Reviews reviews={reviews} restaurantId={restaurantId} />
         </>
       )}
     </>

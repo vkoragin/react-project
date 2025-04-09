@@ -3,13 +3,18 @@ export const metadata = {
   description: 'restaurants app',
 };
 
+import Layout from '../components/layout/layout';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link href="../app.css" rel="stylesheet" />
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }

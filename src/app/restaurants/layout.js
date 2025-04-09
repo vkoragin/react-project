@@ -1,7 +1,7 @@
-import Layout from '../../components/layout/layout';
+import { RestaurantsPage } from '../../components/pages/restaurants-page/restaurants-page';
 
 const RestaurantsLayout = ({ children }) => {
-  return <Layout>{children}</Layout>;
+  return <RestaurantsPage>{children}</RestaurantsPage>;
 };
 
 export default RestaurantsLayout;

@@ -1,7 +1,7 @@
-import { ClietnOnlyApp } from './app';
+import { HomePage } from '../../components/pages/home-page/home-page';
 
 const Page = () => {
-  return <ClietnOnlyApp />;
+  return <HomePage />;
 };
 
 export default Page;

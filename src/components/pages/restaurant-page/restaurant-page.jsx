@@ -1,13 +1,10 @@
 'use client';
 
-import { useParams } from 'next/navigation';
 import styles from './restaurant-page.module.css';
 import { RestaurantNav } from '../../restaurant-nav/restaurant-nav';
 import { useGetRestaurantQuery } from '../../../redux/servicies/api';
 
-export const RestaurantPage = ({ children }) => {
-  const { restaurantId } = useParams();
-
+export const RestaurantPage = ({ children, restaurantId }) => {
   const {
     data: restaurant,
     isLoading,

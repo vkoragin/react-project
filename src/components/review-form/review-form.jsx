@@ -1,11 +1,9 @@
-import { useParams } from 'next/navigation';
 import { Counter } from '../counter/counter';
 import { Button } from '../button/button';
 import { useReviewForm } from './use-review-form';
 import styles from './review-form.module.css';
 
-export const ReviewForm = ({ review }) => {
-  const { restaurantId } = useParams();
+export const ReviewForm = ({ review, restaurantId }) => {
   const {
     name,
     text,
