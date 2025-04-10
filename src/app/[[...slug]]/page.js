@@ -1,3 +1,3 @@
-import { HomePage } from '../../components/pages/home-page/home-page';
+import { PageNotFound } from '../../components/pages/page-not-found/page-not-found';
 
-export default HomePage;
+export default PageNotFound;
