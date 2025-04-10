@@ -1,4 +1,6 @@
-import { Link } from 'react-router';
+'use client';
+
+import Link from 'next/link';
 import styles from './page-not-found.module.css';
 
 export const PageNotFound = () => {
@@ -9,7 +11,7 @@ export const PageNotFound = () => {
         <br />
         Страница не найдена
       </h2>
-      <Link to="/">На главную</Link>
+      <Link href="/">На главную</Link>
     </section>
   );
 };

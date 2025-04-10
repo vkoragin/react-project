@@ -1,13 +1,12 @@
-import { useParams } from 'react-router';
-import { Reviews } from '../../components/reviews/reviews';
+'use client';
+
+import { Reviews } from '../../reviews/reviews';
 import {
   useGetUsersQuery,
   useGetReviewsQuery,
-} from '../../redux/servicies/api';
+} from '../../../redux/servicies/api';
 
-export const ReviewsPage = () => {
-  const { restaurantId } = useParams();
-
+export const ReviewsPage = ({ restaurantId }) => {
   const { isLoading: isUsersLoading, isError: isUsersError } =
     useGetUsersQuery();
   const {
@@ -33,7 +32,7 @@ export const ReviewsPage = () => {
       {!!reviews.length && (
         <>
           <h3>Отзывы</h3>
-          <Reviews reviews={reviews} />
+          <Reviews reviews={reviews} restaurantId={restaurantId} />
         </>
       )}
     </>

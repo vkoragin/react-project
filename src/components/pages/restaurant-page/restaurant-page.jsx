@@ -1,10 +1,10 @@
-import { useParams, Outlet } from 'react-router';
-import styles from './restaurant-page.module.css';
-import { RestaurantNav } from '../../components/restaurant-nav/restaurant-nav';
-import { useGetRestaurantQuery } from '../../redux/servicies/api';
+'use client';
 
-export const RestaurantPage = () => {
-  const { restaurantId } = useParams();
+import styles from './restaurant-page.module.css';
+import { RestaurantNav } from '../../restaurant-nav/restaurant-nav';
+import { useGetRestaurantQuery } from '../../../redux/servicies/api';
+
+export const RestaurantPage = ({ children, restaurantId }) => {
   const {
     data: restaurant,
     isLoading,
@@ -24,8 +24,8 @@ export const RestaurantPage = () => {
       <div className={styles.wrapper}>
         <h2>{restaurant.name}</h2>
       </div>
-      <RestaurantNav />
-      <Outlet />
+      <RestaurantNav restaurantId={restaurantId} />
+      {children}
     </section>
   );
 };

@@ -3,7 +3,7 @@ import { Button } from '../button/button';
 import { useReviewForm } from './use-review-form';
 import styles from './review-form.module.css';
 
-export const ReviewForm = ({ review }) => {
+export const ReviewForm = ({ review, restaurantId }) => {
   const {
     name,
     text,
@@ -17,7 +17,7 @@ export const ReviewForm = ({ review }) => {
     handleSubmit,
     headerText,
     buttonText,
-  } = useReviewForm({ review });
+  } = useReviewForm({ review, restaurantId });
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>

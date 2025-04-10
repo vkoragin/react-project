@@ -1,14 +1,19 @@
-import { NavLink } from 'react-router';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styles from './navigation-link.module.css';
 import classNames from 'classnames';
 
 export const NavigationLink = ({ to, text }) => {
+  const pathname = usePathname();
+
   return (
-    <NavLink
-      to={to}
-      className={({ isActive }) => classNames(isActive && styles.isActive)}
+    <Link
+      href={to}
+      className={classNames({
+        [styles.isActive]: to === pathname,
+      })}
     >
       {text}
-    </NavLink>
+    </Link>
   );
 };
