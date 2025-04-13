@@ -1,8 +1,6 @@
 import { Suspense } from 'react';
 import { RestaurantsPage } from '../../components/pages/restaurants-page/restaurants-page';
 
-export default RestaurantsPage;
-
 export const RestaurantsLayout = ({ children }) => {
   return (
     <div>
@@ -13,3 +11,5 @@ export const RestaurantsLayout = ({ children }) => {
     </div>
   );
 };
+
+export default RestaurantsLayout;
