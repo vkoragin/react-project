@@ -1,18 +1,12 @@
-'use client';
-
 import { Ingredients } from '../../ingredients/ingredients';
 import { DishCounter } from '../../dish-conter/dish-counter';
-import { useGetDishQuery } from '../../../redux/servicies/api';
+import { getDish } from '../../../servicies/get-dish';
 
-export const DishPage = ({ dishId }) => {
-  const { data: dish, isLoading, isError } = useGetDishQuery(dishId);
+export const DishPage = async ({ dishId }) => {
+  const dish = await getDish(dishId);
 
-  if (isLoading) {
-    return '...loading';
-  }
-
-  if (isError) {
-    return 'ERROR';
+  if (!dish) {
+    return;
   }
 
   return (

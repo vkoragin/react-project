@@ -5,32 +5,12 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/api' }),
   tagTypes: ['reviews'],
   endpoints: (builder) => ({
-    getRestaurants: builder.query({
-      query: () => '/restaurants',
-    }),
-    getRestaurant: builder.query({
-      query: (restaurantId) => `/restaurant/${restaurantId}`,
-    }),
-    getUsers: builder.query({
-      query: () => '/users',
-    }),
-    getReviews: builder.query({
-      query: (restaurantId) => `/reviews?restaurantId=${restaurantId}`,
-      providesTags: [{ type: 'reviews', id: 'all' }],
-    }),
-    getMenu: builder.query({
-      query: (restaurantId) => `dishes?restaurantId=${restaurantId}`,
-    }),
-    getDish: builder.query({
-      query: (dishId) => `/dish/${dishId}`,
-    }),
     addReview: builder.mutation({
       query: ({ restaurantId, review }) => ({
         url: `/review/${restaurantId}`,
         body: review,
         method: 'POST',
       }),
-      invalidatesTags: [{ type: 'reviews', id: 'all' }],
     }),
     changeReview: builder.mutation({
       query: ({ restaurantId, review }) => ({
@@ -38,19 +18,8 @@ export const api = createApi({
         body: review,
         method: 'PATCH',
       }),
-      invalidatesTags: [{ type: 'reviews', id: 'all' }],
     }),
   }),
 });
 
-export const {
-  useGetRestaurantsQuery,
-  useGetRestaurantQuery,
-  useLazyGetRestaurantsQuery,
-  useGetUsersQuery,
-  useGetReviewsQuery,
-  useGetMenuQuery,
-  useGetDishQuery,
-  useAddReviewMutation,
-  useChangeReviewMutation,
-} = api;
+export const { useAddReviewMutation, useChangeReviewMutation } = api;

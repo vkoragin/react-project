@@ -1,9 +1,11 @@
+'use client';
+
 import { useSelector } from 'react-redux';
 import { selectCartItems } from '../../redux/entities/cart/slice';
 import { CartItem } from '../cart-item/cart-item';
 import styles from './cart.module.css';
 
-export const Cart = () => {
+export const Cart = ({ restaurants }) => {
   const items = useSelector(selectCartItems);
 
   if (!items.length) {
@@ -14,7 +16,7 @@ export const Cart = () => {
     <ul className={styles.cart}>
       {items.map(({ id, amount }) => (
         <li key={id}>
-          <CartItem id={id} amount={amount} />
+          <CartItem id={id} amount={amount} restaurants={restaurants} />
         </li>
       ))}
     </ul>

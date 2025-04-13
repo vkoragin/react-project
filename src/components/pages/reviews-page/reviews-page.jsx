@@ -1,40 +1,21 @@
-'use client';
-
 import { Reviews } from '../../reviews/reviews';
-import {
-  useGetUsersQuery,
-  useGetReviewsQuery,
-} from '../../../redux/servicies/api';
+import { getReviews } from '../../../servicies/get-reviews';
+import { getUsers } from '../../../servicies/get-users';
 
-export const ReviewsPage = ({ restaurantId }) => {
-  const { isLoading: isUsersLoading, isError: isUsersError } =
-    useGetUsersQuery();
-  const {
-    isFetching: isReviewsLoading,
-    isError: isReviewsError,
-    data: reviews,
-  } = useGetReviewsQuery(restaurantId);
+export const ReviewsPage = async ({ restaurantId }) => {
+  const reviewsPromise = getReviews(restaurantId);
+  const usersPromise = getUsers();
 
-  const isLoading = isUsersLoading || isReviewsLoading;
+  const [reviews, users] = await Promise.all([reviewsPromise, usersPromise]);
 
-  const isError = isUsersError || isReviewsError;
-
-  if (isLoading) {
-    return 'loading...';
-  }
-
-  if (isError) {
-    return 'ERROR';
+  if (!reviews.length || !users.length) {
+    return;
   }
 
   return (
     <>
-      {!!reviews.length && (
-        <>
-          <h3>Отзывы</h3>
-          <Reviews reviews={reviews} restaurantId={restaurantId} />
-        </>
-      )}
+      <h3>Отзывы</h3>
+      <Reviews reviews={reviews} restaurantId={restaurantId} users={users} />
     </>
   );
 };

@@ -1,22 +1,12 @@
-'use client';
-
 import styles from './restaurant-page.module.css';
 import { RestaurantNav } from '../../restaurant-nav/restaurant-nav';
-import { useGetRestaurantQuery } from '../../../redux/servicies/api';
+import { getRestaurant } from '../../../servicies/get-restaurant';
 
-export const RestaurantPage = ({ children, restaurantId }) => {
-  const {
-    data: restaurant,
-    isLoading,
-    isError,
-  } = useGetRestaurantQuery(restaurantId);
+export const RestaurantPage = async ({ children, restaurantId }) => {
+  const restaurant = await getRestaurant(restaurantId);
 
-  if (isLoading) {
-    return '...loading';
-  }
-
-  if (isError) {
-    return 'ERROR';
+  if (!restaurant) {
+    return;
   }
 
   return (

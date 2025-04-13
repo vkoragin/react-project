@@ -1,27 +1,17 @@
-'use client';
-
 import { Dishs } from '../../dishs/dishs';
-import { useGetMenuQuery } from '../../../redux/servicies/api';
+import { getMenu } from '../../../servicies/get-menu';
 
-export const MenuPage = ({ restaurantId }) => {
-  const { isLoading, isError, data: menu } = useGetMenuQuery(restaurantId);
+export const MenuPage = async ({ restaurantId }) => {
+  const menu = await getMenu(restaurantId);
 
-  if (isLoading) {
-    return 'loading...';
-  }
-
-  if (isError) {
-    return 'ERROR';
+  if (!menu.length) {
+    return;
   }
 
   return (
     <>
-      {!!menu.length && (
-        <>
-          <h3>Меню</h3>
-          <Dishs menu={menu} />
-        </>
-      )}
+      <h3>Меню</h3>
+      <Dishs menu={menu} />
     </>
   );
 };
