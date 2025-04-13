@@ -1,5 +1,5 @@
-export const CartItem = ({ id, amount, restaurants }) => {
-  const restaurant = restaurants.find((dish) => dish.id === id);
+export const CartItem = ({ id, amount, menu }) => {
+  const dish = menu.find((dish) => dish.id === id);
 
-  return restaurant ? `${restaurant.name} - ${amount}` : null;
+  return dish ? `${dish.name} - ${amount}` : null;
 };

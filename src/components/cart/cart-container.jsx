@@ -1,8 +1,8 @@
 import { Cart } from './cart';
-import { getRestaurants } from '../../servicies/get-restaurants';
+import { getMenu } from '../../servicies/get-menu';
 
 export const CartContainer = async () => {
-  const restaurants = await getRestaurants();
+  const menu = await getMenu();
 
-  return <Cart restaurants={restaurants} />;
+  return <Cart menu={menu} />;
 };
