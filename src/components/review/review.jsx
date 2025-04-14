@@ -16,7 +16,7 @@ export const Review = ({ review, maintainerId, restaurantId, users }) => {
   return (
     <>
       {isEdit ? (
-        <ReviewForm review={review} restaurantId={restaurantId} users={users} />
+        <ReviewForm review={review} restaurantId={restaurantId} />
       ) : (
         <>
           {`${name}: ${text}`}{' '}

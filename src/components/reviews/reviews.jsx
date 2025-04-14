@@ -22,7 +22,7 @@ export const Reviews = ({ reviews, restaurantId, users }) => {
           </li>
         ))}
       </ul>
-      {!!user && <ReviewForm restaurantId={restaurantId} users={users} />}
+      {!!user && <ReviewForm restaurantId={restaurantId} />}
     </>
   );
 };
