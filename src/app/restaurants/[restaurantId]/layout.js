@@ -1,5 +1,5 @@
 import { getRestaurants } from '../../../servicies/get-restaurants';
-import RestaurantLayout from '../../../components/layout-restaurant/layout-restaurnt';
+import RestaurantLayout from '../../../components/layout-restaurant/layout-restaurant';
 
 export const generateMetadata = async ({ params }) => {
   const { restaurantId } = await params;
