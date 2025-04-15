@@ -4,11 +4,19 @@
   margin-bottom: 4px;
 }
 
-.counterWrapper {
-  margin-bottom: 4px;
-}
-
 .buttons {
   display: flex;
   gap: 4px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.rating {
+  border: 0;
+  width: 8px;
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { getCurrentProgress } from './helper';
 import styles from './progress-bar.module.css';

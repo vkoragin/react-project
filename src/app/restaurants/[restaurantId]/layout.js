@@ -1,10 +1,16 @@
-import { RestaurantPage } from '../../../components/pages/restaurant-page/restaurant-page';
+import { getRestaurants } from '../../../servicies/get-restaurants';
+import RestaurantLayout from '../../../components/layout-restaurant/layout-restaurant';
 
-const RestaurantLayout = async ({ children, params }) => {
+export const generateMetadata = async ({ params }) => {
   const { restaurantId } = await params;
-  return (
-    <RestaurantPage restaurantId={restaurantId}>{children}</RestaurantPage>
-  );
+
+  const restaurants = await getRestaurants();
+
+  const restaurant = restaurants.find(({ id }) => restaurantId === id);
+
+  return {
+    title: restaurant.name,
+  };
 };
 
 export default RestaurantLayout;

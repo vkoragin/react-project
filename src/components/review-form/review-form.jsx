@@ -1,60 +1,78 @@
-import { Counter } from '../counter/counter';
+import { useActionState, useCallback, useRef } from 'react';
 import { Button } from '../button/button';
 import { useReviewForm } from './use-review-form';
 import styles from './review-form.module.css';
 
 export const ReviewForm = ({ review, restaurantId }) => {
-  const {
-    name,
-    text,
-    rating,
-    setName,
-    setText,
-    incrementRating,
-    decrementRating,
-    clearForm,
-    isSubmitDisabled,
-    handleSubmit,
-    headerText,
-    buttonText,
-  } = useReviewForm({ review, restaurantId });
+  const ratingRef = useRef();
+  const textRef = useRef();
+
+  const { headerText, buttonText, submitFormAction } = useReviewForm({
+    review,
+    restaurantId,
+  });
+
+  const [formState, submitAction, isPending] = useActionState(
+    submitFormAction,
+    {
+      text: '',
+      rating: 5,
+    }
+  );
+
+  const handleSetText = useCallback(
+    (e) => {
+      textRef.current.value = e.target.value;
+    },
+    [textRef]
+  );
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form action={submitAction}>
       <h3>{headerText}</h3>
+
       <label className={styles.label}>
         <input
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <span>Имя</span>
-      </label>
-      <label className={styles.label}>
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          id="text"
+          name="text"
+          ref={textRef}
+          defaultValue={formState.text}
+          onChange={handleSetText}
         />
         <span>Текст</span>
       </label>
 
-      <div className={styles.counterWrapper}>
-        <Counter
-          count={rating}
-          increment={incrementRating}
-          decrement={decrementRating}
+      <div className={styles.counter}>
+        <Button
+          onClick={() => ratingRef.current.stepDown()}
+          type="button"
+          text="-"
+        />
+        <input
+          className={styles.rating}
+          type="number"
+          id="rating"
+          name="rating"
+          min={1}
+          max={5}
+          ref={ratingRef}
+          defaultValue={formState.rating}
+        />
+        <Button
+          onClick={() => ratingRef.current.stepUp()}
+          type="button"
+          text="+"
         />
       </div>
 
       <div className={styles.buttons}>
-        <Button type="button" onClick={clearForm} text="Очистить" />
         <Button
           type="submit"
-          onClick={handleSubmit}
-          text={buttonText}
-          disabled={isSubmitDisabled}
+          formAction={() => submitAction(null)}
+          text="Очистить"
         />
+        <Button type="submit" text={buttonText} disabled={isPending} />
       </div>
     </form>
   );

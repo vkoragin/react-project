@@ -1,16 +1,13 @@
 import { useMemo, useState } from 'react';
-import { useGetUsersQuery } from '../../redux/servicies/api';
 
-export const useReview = ({ review, maintainerId }) => {
+export const useReview = ({ review, maintainerId, users }) => {
   const { userId, text } = review;
   const [isEdit, setIsEdit] = useState(false);
 
-  const { data: user } = useGetUsersQuery(undefined, {
-    selectFromResult: (result) => ({
-      ...result,
-      data: result.data?.find(({ id }) => id === userId),
-    }),
-  });
+  const user = useMemo(
+    () => users?.find(({ id }) => id === userId),
+    [users, userId]
+  );
 
   const name = useMemo(() => user?.name, [user]);
 

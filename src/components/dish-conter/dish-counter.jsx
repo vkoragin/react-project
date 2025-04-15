@@ -1,3 +1,5 @@
+'use client';
+
 import { use } from 'react';
 import { Counter } from '../counter/counter';
 import { useCount } from '../counter/use-count';
